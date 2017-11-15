@@ -1,0 +1,42 @@
+.add_goods_box{
+
+  .goods_item_box{
+    margin-top: 10px;
+    .goods{
+      height:170px;
+      margin-bottom: 10px;
+      border: 1px dashed #c0ccda;
+      border-radius: 6px;
+      position: relative;
+      margin-right: 10px;
+      img{
+        height:90px;
+        display: block;
+        margin: 0 auto;
+        border-bottom: 1px solid #eee;
+      }
+      .info{
+        width: 100%;
+        div{
+          padding: 0px 10px;
+          height: 30px;
+          overflow: hidden;
+        }
+      }
+    }
+    .remove-goods{
+      position: absolute;
+      right: -8px;
+      top: -8px;
+      color: #fff;
+      padding: 3px;
+      border-radius: 10px;
+      background-color: #f1a2a2;
+      cursor: pointer;
+
+      &:hover {
+        background-color: #da6464;
+      }
+    }
+  }
+}

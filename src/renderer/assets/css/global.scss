@@ -1,0 +1,18 @@
+.phone {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #e4e4e4;
+  border-radius: 30px;
+  box-shadow: 10px 10px 5px #888888;
+  background: white;
+  width: 360px;
+  height: 650px;
+
+  .phone_view {
+    width: 320px;
+    height: 568px;
+    overflow: auto;
+    border: 1px solid #e4e4e4;
+  }
+}
