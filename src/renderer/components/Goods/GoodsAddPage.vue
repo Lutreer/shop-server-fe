@@ -148,6 +148,9 @@
                                         <el-form-item label="备注" prop="remark" class="price-plan-item">
                                             <el-input v-model="plan.remark" placeholder="简短的说明"></el-input>
                                         </el-form-item>
+                                        <el-form-item label="+购物车" prop="add_cart_sym" class="price-plan-item">
+                                            <el-input v-model="plan.add_cart_sym" placeholder="添加购物车的符号"></el-input>
+                                        </el-form-item>
                                         <el-form-item label="上架(显示)" prop="is_show">
                                             <el-switch on-text="上" off-text="下" v-model="plan.is_show"></el-switch>
                                         </el-form-item>
@@ -379,7 +382,6 @@
 
       },
       picRemove(ref) {
-        debugger
         // 监听修改数据时的图片删除操作
         if (this.id && this.id > 0) {
           let editPic = {
@@ -404,7 +406,6 @@
 
       },
       confirmGoodsSelect(result) {
-        debugger
         result.forEach(n_good => {
           let isNew = false
           this.infoForm.goods.forEach(b_good => {
