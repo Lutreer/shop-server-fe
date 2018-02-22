@@ -1,6 +1,6 @@
 const CONST = {
   DEVELOPMENT: {
-    OMS: 'http://localhost:8360',
+    OMS: 'https://www.thankni.com/admin',
     IMAGE: 'http://image.thankni.com',
     QINIU_HB: 'http://upload-z1.qiniu.com',
     QINIU_RS: 'http://rs.qiniu.com'
@@ -20,4 +20,4 @@ const CONST = {
     QINIU_RS: 'http://rs.qiniu.com'
   }
 }
-export default CONST[process.env.NODE_ENV.toUpperCase().toString()]
+export default CONST[process.env.NODE_ENV.toString().toUpperCase()]

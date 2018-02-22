@@ -82,6 +82,12 @@ if (process.env.NODE_ENV === 'production') {
       'process.env.NODE_ENV': '"production"'
     })
   )
+}else {
+  mainConfig.plugins.push(
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': '"development"'
+    })
+  )
 }
 
 module.exports = mainConfig

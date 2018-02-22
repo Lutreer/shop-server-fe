@@ -60,7 +60,6 @@
           name: "",
           description: "",
           banner_pic_url: '',
-          front_name: '',
           sort_order: 999,
           is_show: true,
         },
@@ -112,7 +111,7 @@
             [ref]: this.$refs[ref].$getFileList().toString()
           }
           this.infoForm[ref] = this.$refs[ref].$getFileList().toString()
-          this.axios.post('categorypdatePic', editPic).then((response) => {
+          this.axios.post('category/updatePic', editPic).then((response) => {
             if (response.data.errno === 0) {
               this.$message({
                 type: 'success',

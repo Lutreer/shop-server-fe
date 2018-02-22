@@ -10,11 +10,11 @@ export default class ImageService extends BaseService {
   }
 
   getUploadToken(options) {
-    return this.service.post('/admin/qiniu/uploadToken', options)
+    return this.service.post('/qiniu/uploadToken', options)
   }
 
   deleteFileFromQiniu(options) {
-    return this.service.post('/admin/qiniu/delete', options)
+    return this.service.post('/qiniu/delete', options)
   }
 
 }
