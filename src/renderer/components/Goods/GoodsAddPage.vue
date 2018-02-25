@@ -31,7 +31,7 @@
                     </el-form-item>
 
                     <el-form-item label="促销标签" prop="promotion_tag">
-                        <el-input type="textarea" v-model="infoForm.promotion_tag" :rows="3"></el-input>
+                        <el-input type="textarea" v-model="infoForm.promotion_tag" :rows="3" placeholder="使用*分隔"></el-input>
                         <div class="form-tip"></div>
                     </el-form-item>
 
@@ -244,7 +244,7 @@
             {required: true, message: '请输入名称', trigger: 'blur'},
           ],
           goods_brief: [
-            {required: true, message: '请输入简介', trigger: 'blur'},
+            {required: false, message: '请输入简介', trigger: 'blur'},
           ]
         },
       }
