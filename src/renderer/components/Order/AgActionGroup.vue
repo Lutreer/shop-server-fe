@@ -27,26 +27,21 @@
                 <el-button type="primary" @click="saveChangeOrderStatus">确 定</el-button>
             </span>
         </el-dialog>
-
-
-        <el-dialog
-                title="商品详情"
-                :visible.sync="goodsDetailDialogVisible"
-                width="100%">
-            <span>认真核对当前状态后再进行操作</span>
-
-        </el-dialog>
     </div>
 
 </template>
 
 <script>
-  import agButton from './agButton'
+  import eventBus from '../../assets/js/eventBus'
+  import agButton from './AgButton'
   import orderStatus from '../../assets/js/orderStatus'
+
+  import {AgGridVue} from 'ag-grid-vue'
+  import AgActionGroup from './AgActionGroup.vue'
 
   export default {
     name: "ag-action-group",
-    components: {agButton},
+    components: {agButton, AgGridVue, AgActionGroup},
     data() {
       return {
         agComponents: "",
@@ -55,11 +50,13 @@
         currentSubmitUrl: '',
         currentRowData: {},
 
-
         // 修改订单状态 TODO 该功能需做严格限制
         toChangeOrderStatusValue: null,
-        changeOrderStatusDialogVisible: false
+        changeOrderStatusDialogVisible: false,
+        goodsDetailDialogVisible:false
       };
+    },
+    props: {
     },
     beforeMount() {
       this.agComponents = this.params.props.agComponents
@@ -76,22 +73,23 @@
 
             break
           case 'detail' :
-
+            this.orderGoodsDetail()
             break
           case 'changeOrderStatus' :
 
             this.changeOrderStatus()
             break
         }
-        debugger
 
       },
-
+      orderGoodsDetail(){
+        eventBus.$emit('showGoodsDetail', this.currentRowData.order_goods)
+      },
       changeOrderStatus(){
         this.changeOrderStatusDialogVisible = true
-
       },
       saveChangeOrderStatus() {
+        if(this.toChangeOrderStatusValue == null) return false
         this.axios.post(this.currentSubmitUrl, {orderId: this.currentRowData.id, orderStatus: this.toChangeOrderStatusValue}).then((response) => {
           if (response.data.errno === 0) {
             this.$message({

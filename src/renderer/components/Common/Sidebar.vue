@@ -31,9 +31,13 @@
                 <template slot="title">
                     <i class="fa fa-large fa-truck"></i>订单中心
                 </template>
-                <el-menu-item index="/dashboard/order">
+                <el-menu-item index="/dashboard/order/list">
                     <i class="fa fa-circle"></i>
                     <span>订单列表</span>
+                </el-menu-item>
+                <el-menu-item index="/dashboard/order/allGoods">
+                    <i class="fa fa-circle"></i>
+                    <span>订单商品</span>
                 </el-menu-item>
                 <!--<el-menu-item index="/dashboard/order/detail">-->
                     <!--<i class="fa fa-circle"></i>-->
@@ -83,17 +87,9 @@
                     <i class="fa fa-large fa-wrench"></i>
                     <span>店铺设置</span>
                 </template>
-                <el-menu-item index="/dashboard/setting">
-                    <i class="fa fa-circle"></i>
-                    <span>店铺信息</span>
-                </el-menu-item>
-                <el-menu-item index="/dashboard/setting/s">
+                <el-menu-item index="/dashboard/setting/wechat">
                     <i class="fa fa-circle"></i>
                     <span>微信设置</span>
-                </el-menu-item>
-                <el-menu-item index="/dashboard/setting/a">
-                    <i class="fa fa-circle"></i>
-                    <span>首页</span>
                 </el-menu-item>
             </el-submenu>
         </el-menu>

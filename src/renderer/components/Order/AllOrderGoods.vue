@@ -4,7 +4,7 @@
             <el-breadcrumb class="breadcrumb" separator="/">
                 <el-breadcrumb-item :to="{ path: '/dashboard' }">首页</el-breadcrumb-item>
                 <el-breadcrumb-item>订单中心</el-breadcrumb-item>
-                <el-breadcrumb-item>订单列表</el-breadcrumb-item>
+                <el-breadcrumb-item>订单商品</el-breadcrumb-item>
             </el-breadcrumb>
 
         </div>
@@ -23,46 +23,29 @@
             </div>
 
         </div>
-
-
-        <el-dialog
-                size="large"
-                title="商品详情"
-                :visible.sync="goodsDetailDialogVisible"
-                width="100%">
-            <ag-grid-vue style="height:300px" class="ag-theme-fresh"
-                         :enableColResize="true"
-                         :enableSorting="true"
-                         :gridOptions="goodsDetailGridOptions"></ag-grid-vue>
-        </el-dialog>
     </div>
 </template>
 
 <script>
   import eventBus from '../../assets/js/eventBus'
-  import orderColumn from './orderColumn'
   import goodsColumn from './goodsColumn'
   import {AgGridVue} from 'ag-grid-vue'
-  import AgActionGroup from './AgActionGroup.vue'
 
   export default {
     components: {
-    'ag-grid-vue': AgGridVue,
-    'ag-action-group': AgActionGroup
+      'ag-grid-vue': AgGridVue
     },
     data() {
       return {
         gridOptions: {},
-        goodsDetailGridOptions: {},
-        searchDateTime: [],
-        goodsDetailDialogVisible: false
+        searchDateTime: []
       }
     },
 
     methods: {
       getList(params) {
         let that = this
-        this.axios.get('order', {params: params}).then((response) => {
+        this.axios.get('orderGoods', {params: params}).then((response) => {
           let data = response.data.data
           that.gridOptions.api.setRowData(data)
         })
@@ -72,7 +55,7 @@
       }
     },
     beforeMount() {
-      orderColumn.map(el => {
+      goodsColumn.map(el => {
         el['menuTabs'] = ['filterMenuTab', 'generalMenuTab', 'columnsMenuTab']
         el['enableRowGroup'] = true
         // el['enablePivot'] = true
@@ -80,35 +63,15 @@
         // el['aggFunc'] = true
         // el['pivot'] = true
       })
-      this.gridOptions.context = {}
-      this.gridOptions.context.thisParent = this
       // this.gridOptions.domLayout = 700
       this.gridOptions.floatingFilter = true
-      this.gridOptions.columnDefs = orderColumn
+      this.gridOptions.columnDefs = goodsColumn
       this.gridOptions.rowGroupPanelShow = 'always'
       // this.gridOptions.getMainMenuItems = ['pinSubMenu', 'valueAggSubMenu']
 
       this.gridOptions.rowData = []
       this.getList();
 
-
-
-      goodsColumn.map(el => {
-        el['menuTabs'] = ['filterMenuTab', 'generalMenuTab', 'columnsMenuTab']
-        el['enableRowGroup'] = true
-        el['enableValue'] = true
-      })
-      this.goodsDetailGridOptions.floatingFilter = true
-      this.goodsDetailGridOptions.rowGroupPanelShow = true
-      this.goodsDetailGridOptions.columnDefs = goodsColumn
-      this.goodsDetailGridOptions.rowData = []
-
-      this.goodsDetailDialogVisible = true
-      this.goodsDetailDialogVisible = false
-      eventBus.$on('showGoodsDetail', goods => {
-        this.goodsDetailDialogVisible = true
-        this.goodsDetailGridOptions.api.setRowData(goods)
-      })
     },
     mounted() {
 

@@ -55,7 +55,7 @@
 
                     this.loading = true;
 
-                    this.axios.post('http://127.0.0.1:8360/admin/auth/login', {
+                    this.axios.post('/auth/login', {
                         username: this.form.username,
                         password: this.form.password
                     }).then((res) => {

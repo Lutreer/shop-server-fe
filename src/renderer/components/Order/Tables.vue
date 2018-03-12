@@ -25,7 +25,6 @@
       getList() {
         let that = this
         this.axios.get('order').then((response) => {
-          debugger
           let data = response.data.data
 
           that.gridOptions.rowData = data

@@ -70,15 +70,20 @@ export default new Router({
           props: true
         },
         {
-          path: 'order',
-          name: 'order',
+          path: 'order/list',
+          name: 'orderList',
           component: require('@/components/Order/OrderPage')
         },
         {
-          path: 'order/detail',
-          name: 'order_detail',
-          component: require('@/components/Order/OrderDetailPage')
+          path: 'order/allGoods',
+          name: 'allOrderGoods',
+          component: require('@/components/Order/AllOrderGoods')
         },
+        // {
+        //   path: 'order/detail',
+        //   name: 'order_detail',
+        //   component: require('@/components/Order/OrderDetailPage')
+        // },
         {
           path: 'operate/topic',
           name: 'topic',
@@ -105,6 +110,11 @@ export default new Router({
           name: 'user_add',
           component: require('@/components/User/UserAddPage')
         },
+        {
+          path: 'setting/wechat',
+          name: 'setting_wechat',
+          component: require('@/components/Setting/WechatSetting')
+        }
       ]
     },
     {

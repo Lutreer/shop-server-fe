@@ -97,10 +97,9 @@
     },
     computed: {
       c_p_fileList: function () {
-        console.log(this.p_fileList)
         let fileList = []
         const separator = serverConfig.IMAGE + '/'
-        if(this.p_fileList.length > separator.length) {
+        if(this.p_fileList && this.p_fileList.length > separator.length) {
           this.p_fileList.split(",").forEach(el => {
             this.fileList.push(el)
             fileList.push({
@@ -121,7 +120,6 @@
         return this.fileList
       },
       beforeUpload(file) {
-        debugger
         const isImg = file.type === 'image/jpeg' || file.type === 'image/png'
         const isLt2M = file.size / 1024 / 1024 < this.p_maxSize
         if (!isImg) {
@@ -145,14 +143,12 @@
             }
             resolve(true) // 继续上传
           }).catch(error => {
-            debugger
             this.p_emitOnError ? this.$emit(this.p_emitOnError, { error, file }) : this.$emit(this.p_ref + 'OnError', { error, file })
             reject(error) // 停止上传
           })
         })
       },
       onError(err, file, fileList) {
-        debugger
         this.$notify.error({
           title: err.status,
           message: err.message,

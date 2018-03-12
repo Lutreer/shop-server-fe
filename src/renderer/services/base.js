@@ -22,7 +22,6 @@ export default class BaseService {
 
     // 响应拦截器
     service.interceptors.response.use(function(response) {
-      debugger
       if (response.status === 200 && response.data.errno === 0) {
         return response.data
       } else {
@@ -30,7 +29,6 @@ export default class BaseService {
       }
     }, function(error) {
       // Do something with response error
-      debugger
       return Promise.reject(error)
     })
 

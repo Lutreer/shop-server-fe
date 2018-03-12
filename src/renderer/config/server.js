@@ -1,6 +1,6 @@
 const CONST = {
   DEVELOPMENT: {
-    OMS: 'https://www.thankni.com/admin',
+    OMS: 'http://127.0.0.1:8360/admin',
     IMAGE: 'http://image.thankni.com',
     QINIU_HB: 'http://upload-z1.qiniu.com',
     QINIU_RS: 'http://rs.qiniu.com'
@@ -13,7 +13,7 @@ const CONST = {
     QINIU_RS: 'http://rs.qiniu.com'
   },
   PRODUCTION: {
-    OMS: 'http://api.online.com/api1',
+    OMS: 'https://www.thankni.com/admin',
     SERVER_2: 'http://api.online.com/api2',
     IMAGE: 'http://image.thankni.com',
     QINIU_HB: 'http://upload-z1.qiniu.com',

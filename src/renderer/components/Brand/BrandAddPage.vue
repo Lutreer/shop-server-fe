@@ -55,6 +55,12 @@
                         </qiniu-upload>
                         <div class="form-tip">图片数量：仅1张；图片尺寸：375*252</div>
                     </el-form-item>
+
+                    <good-select-dialog ref="goodSelect"
+                                        p_ref="goodSelect"
+                                        p_emit_confirm="confirmGoodsSelect"
+                                        v-on:confirmGoodsSelect="confirmGoodsSelect"
+                    ></good-select-dialog>
                     <el-row class="add_goods_box">
                         <el-col :span="24">
                             <el-form-item label="添加商品"  prop="goods">
@@ -185,6 +191,7 @@
           id: this.infoForm.id,
           [ref]: this.$refs[ref].$getFileList().toString()
         }
+        debugger
         this.infoForm[ref] = this.$refs[ref].$getFileList().toString()
         this.axios.post('brand/updatePic', editPic).then((response) => {
           if (response.data.errno === 0) {
