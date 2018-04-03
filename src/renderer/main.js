@@ -26,7 +26,7 @@ router.beforeEach((to, from, next) => {
 
   //配置接口信息
   // Axios.defaults.baseURL = 'https://www.thankni.com/admin/';
-  Axios.defaults.baseURL = process.env.NODE_ENV !== 'development' ? 'https://www.thankni.com/admin/' : 'http://127.0.0.1:8360/admin/';
+  Axios.defaults.baseURL = process.env.NODE_ENV == 'development' ? 'https://www.thankni.com/admin/' : 'http://127.0.0.1:8360/admin/';
   Axios.defaults.headers.common['X-Thanknishop-Token'] = token;
 
   if (!token && to.name !== 'login') {

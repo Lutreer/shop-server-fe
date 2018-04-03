@@ -27,7 +27,12 @@
                 <el-table :data="tableData" style="width: 100%" border stripe>
                     <el-table-column prop="id" label="ID" width="95"></el-table-column>
                     <el-table-column prop="title" width="160" label="推推名称"></el-table-column>
-                    <el-table-column prop="inner_pic_url" width="100" label="首图">
+                    <el-table-column prop="outter_pic_url" width="100" label="首页图">
+                        <template scope="scope">
+                            <img :src="scope.row.outter_pic_url" width="100%"/>
+                        </template>
+                    </el-table-column>
+                    <el-table-column prop="inner_pic_url" width="100" label="列表图">
                         <template scope="scope">
                             <img :src="scope.row.inner_pic_url" width="100%"/>
                         </template>

@@ -53,7 +53,7 @@
                                       v-on:picRemove="picRemove"
                         >
                         </qiniu-upload>
-                        <div class="form-tip">图片数量：仅1张；图片尺寸：375*252</div>
+                        <div class="form-tip">图片数量：仅1张；图片尺寸：374*200</div>
                     </el-form-item>
 
                     <good-select-dialog ref="goodSelect"

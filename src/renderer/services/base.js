@@ -11,7 +11,8 @@ export default class BaseService {
     this.responsetWhiteList = ['login']
 
     const service = axios.create(this.config)
-
+    // Axios.defaults.baseURL = 'https://www.thankni.com/admin/';
+    service.defaults.baseURL = process.env.NODE_ENV == 'development' ? 'https://www.thankni.com/admin/' : 'http://127.0.0.1:8360/admin/';
     // 请求拦截器
     service.interceptors.request.use(request => {
       // do something before request
